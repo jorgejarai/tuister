@@ -1,0 +1,25 @@
+module.exports = {
+  printWidth: 80,
+  tabWidth: 2,
+  trailingComma: 'all',
+  singleQuote: true,
+  semi: true,
+  importOrder: [
+    '^@/components/(.*)$',
+    '^@/contexts/(.*)$',
+    '^@/hoc/(.*)$',
+    '^@/hooks/(.*)$',
+    '^@/pages/(.*)$',
+    '^@/styles/(.*)$',
+    '^@/types/(.*)$',
+    '^@/util/(.*)$',
+    '^[./]',
+  ],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  plugins: [
+    require('prettier-plugin-prisma'),
+    require('prettier-plugin-tailwindcss'),
+    require('@trivago/prettier-plugin-sort-imports'),
+  ],
+};
