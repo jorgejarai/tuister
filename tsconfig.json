@@ -17,6 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@/graphql/*": ["graphql/*"],
+      "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"]
     }
   },

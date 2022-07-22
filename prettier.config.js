@@ -7,8 +7,10 @@ module.exports = {
   importOrder: [
     '^@/components/(.*)$',
     '^@/contexts/(.*)$',
+    '^@/graphql/(.*)$',
     '^@/hoc/(.*)$',
     '^@/hooks/(.*)$',
+    '^@/lib/(.*)$',
     '^@/pages/(.*)$',
     '^@/styles/(.*)$',
     '^@/types/(.*)$',
