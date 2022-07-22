@@ -20,6 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         auth0Id: 'a',
         email,
         userName: email,
+        displayName: email,
       },
     });
 

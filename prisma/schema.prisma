@@ -9,16 +9,15 @@ datasource db {
 
 model User {
   id          Int      @id @default(autoincrement())
-  auth0Id     String   @map("auth0_id")
   userName    String   @map("user_name")
-  displayName String   @map("display_name")
+  displayName String?  @map("display_name")
   email       String
   birthDate   DateTime @map("birth_date")
   bio         String?
   posts       Post[]   @relation("user_posts")
   likes       Post[]   @relation("user_likes")
 
-  @@index([auth0Id])
+  @@index([userName, email])
   @@map("users")
 }
 
