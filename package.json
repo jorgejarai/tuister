@@ -10,6 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "@auth0/nextjs-auth0": "^1.9.1",
     "@jcm/nexus-plugin-datetime": "^0.2.0",
     "@prisma/client": "4.1.0",
