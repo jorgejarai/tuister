@@ -1,4 +1,4 @@
-import { extendType, objectType } from 'nexus';
+import { extendType, intArg, nonNull, objectType } from 'nexus';
 
 import { User } from './User';
 
@@ -38,10 +38,27 @@ export const Post = objectType({
 export const PostsQuery = extendType({
   type: 'Query',
   definition(t) {
-    t.nonNull.list.field('posts', {
+    t.nonNull.list.nonNull.field('posts', {
       type: 'Post',
       resolve(_parent, _args, ctx) {
-        return ctx.prisma.post.findMany();
+        return ctx.prisma.post.findMany({
+          orderBy: {
+            createdAt: 'desc',
+          },
+        });
+      },
+    });
+    t.nonNull.field('post', {
+      type: 'Post',
+      args: {
+        id: nonNull(intArg()),
+      },
+      resolve(_parent, _args, ctx) {
+        return ctx.prisma.post.findUnique({
+          where: {
+            id: _args.id,
+          },
+        });
       },
     });
   },
