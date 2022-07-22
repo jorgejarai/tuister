@@ -10,10 +10,11 @@ datasource db {
 model User {
   id        Int      @id @default(autoincrement())
   auth0Id   String   @map("auth0_id")
+  userName  String   @map("user_name")
   birthDate DateTime @map("birth_date")
   bio       String?
-  posts     Post[]
-  likes     Like[]
+  posts     Post[]   @relation("user_posts")
+  likes     Post[]   @relation("user_likes")
 
   @@index([auth0Id])
   @@map("users")
@@ -23,21 +24,10 @@ model Post {
   id        Int      @id @default(autoincrement())
   content   String
   createdAt DateTime @map("created_at")
-  author    User     @relation(fields: [authorId], references: [id])
+  author    User     @relation("user_posts", fields: [authorId], references: [id])
   authorId  Int      @map("author_id")
-  likes     Like[]
+  likes     User[]   @relation("user_likes")
 
   @@index([authorId])
   @@map("posts")
-}
-
-model Like {
-  user   User @relation(fields: [userId], references: [id])
-  userId Int  @map("user_id")
-  post   Post @relation(fields: [postId], references: [id])
-  postId Int  @map("post_id")
-
-  @@id([userId, postId])
-  @@index([userId, postId])
-  @@map("likes")
 }
