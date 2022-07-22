@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import withOptionalAuth from '@/hoc/withOptionalAuth';
+
 const Home: NextPage = () => {
   return (
     <div className="w-full h-full">
@@ -11,4 +13,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default withOptionalAuth(Home, '/api/auth/login');
