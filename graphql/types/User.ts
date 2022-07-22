@@ -8,6 +8,7 @@ export const User = objectType({
     t.nonNull.int('id');
     t.nonNull.string('auth0Id');
     t.nonNull.string('userName');
+    t.nonNull.string('displayName');
     t.nonNull.string('email');
     t.nonNull.dateTime('birthDate', {});
     t.string('bio');
