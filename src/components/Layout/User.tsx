@@ -9,7 +9,13 @@ const User = () => {
 
   return (
     <div className="w-10 h-10 rounded-full bg-gray-100">
-      {user.picture && <img src={user.picture} alt="Mi foto de perfil" />}
+      {user.picture && (
+        <img
+          src={user.picture}
+          alt="Mi foto de perfil"
+          className="rounded-full"
+        />
+      )}
     </div>
   );
 };
