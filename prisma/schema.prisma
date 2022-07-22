@@ -11,6 +11,7 @@ model User {
   id        Int      @id @default(autoincrement())
   auth0Id   String   @map("auth0_id")
   userName  String   @map("user_name")
+  email     String
   birthDate DateTime @map("birth_date")
   bio       String?
   posts     Post[]   @relation("user_posts")
