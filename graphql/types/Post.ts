@@ -20,7 +20,7 @@ export const Post = objectType({
           .author();
       },
     });
-    t.nonNull.list.field('likes', {
+    t.nonNull.list.nonNull.field('likes', {
       type: User,
       async resolve(_parent, _args, ctx) {
         return await ctx.prisma.post

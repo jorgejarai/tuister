@@ -7,6 +7,8 @@ export const User = objectType({
   definition(t) {
     t.nonNull.int('id');
     t.nonNull.string('auth0Id');
+    t.nonNull.string('userName');
+    t.nonNull.string('email');
     t.nonNull.dateTime('birthDate', {});
     t.string('bio');
     t.nonNull.list.field('posts', {
@@ -21,7 +23,7 @@ export const User = objectType({
           .posts();
       },
     });
-    t.nonNull.list.field('likes', {
+    t.nonNull.list.nonNull.field('likes', {
       type: Post,
       async resolve(_parent, _args, ctx) {
         return await ctx.prisma.user
