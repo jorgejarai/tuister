@@ -1,5 +1,7 @@
 import { extendType, intArg, nonNull, objectType, stringArg } from 'nexus';
 
+import getUserEmail from '@/lib/getUserEmail';
+
 import { User } from './User';
 
 export const Post = objectType({
@@ -140,6 +142,35 @@ export const PostsQuery = extendType({
             id: _args.id,
           },
         });
+      },
+    });
+  },
+});
+
+export const PostsMutation = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('createPost', {
+      type: 'Post',
+      args: {
+        content: nonNull(stringArg()),
+      },
+      async resolve(_parent, { content }, ctx) {
+        if (!ctx.user) {
+          return null;
+        }
+
+        const authorId = await getUserEmail(ctx);
+
+        const ret = ctx.prisma.post.create({
+          data: {
+            content,
+            authorId: authorId!!,
+            createdAt: new Date(),
+          },
+        });
+
+        return ret;
       },
     });
   },

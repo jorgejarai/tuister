@@ -9,9 +9,9 @@ datasource db {
 
 model User {
   id          Int      @id @default(autoincrement())
-  userName    String   @map("user_name")
-  displayName String?  @map("display_name")
-  email       String
+  userName    String   @unique @map("user_name")
+  displayName String?  @unique @map("display_name")
+  email       String   @unique
   birthDate   DateTime @map("birth_date")
   bio         String?
   posts       Post[]   @relation("user_posts")

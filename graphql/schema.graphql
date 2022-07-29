@@ -78,6 +78,10 @@ interface DateTimeFieldInterface {
   iso: String!
 }
 
+type Mutation {
+  createPost(content: String!): Post
+}
+
 type Post {
   author: User!
   content: String!
