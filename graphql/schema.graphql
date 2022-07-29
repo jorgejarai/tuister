@@ -83,11 +83,27 @@ type Post {
   content: String!
   createdAt: DateTimeField!
   id: Int!
-  likes: [User]!
+  likes: [User!]!
+}
+
+type PostEdge {
+  cursor: Int
+  node: Post
+}
+
+type PostPageInfo {
+  endCursor: Int
+  hasNextPage: Boolean
+}
+
+type PostResponse {
+  edges: [PostEdge]
+  pageInfo: PostPageInfo
 }
 
 type Query {
-  posts: [Post]!
+  post(id: Int!): Post!
+  posts(after: Int, first: Int!): PostResponse!
   users: [User]!
 }
 
@@ -95,7 +111,10 @@ type User {
   auth0Id: String!
   bio: String
   birthDate: DateTimeField!
+  displayName: String!
+  email: String!
   id: Int!
-  likes: [Post]!
+  likes: [Post!]!
   posts: [Post]!
+  userName: String!
 }

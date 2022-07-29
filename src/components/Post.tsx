@@ -44,7 +44,7 @@ const Post = ({ id }: IProps) => {
         <div className="flex-grow" />
         <div className="self-start flex justify-end">
           <span className="text-sm self-start text-gray-500">
-            {formatCreatedAtDate(data.post.createdAt.iso)}
+            {data.post.createdAt.iso}
           </span>
         </div>
       </div>
