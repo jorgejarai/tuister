@@ -35,3 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 .eslintcache
+
+graphql/schema.graphql
