@@ -1,4 +1,4 @@
-import { extendType, objectType } from 'nexus';
+import { extendType, intArg, nonNull, objectType } from 'nexus';
 
 import { Post } from './Post';
 
@@ -46,6 +46,19 @@ export const UsersQuery = extendType({
       type: 'User',
       resolve(_parent, _args, ctx) {
         return ctx.prisma.user.findMany();
+      },
+    });
+    t.field('user', {
+      type: 'User',
+      args: {
+        id: nonNull(intArg()),
+      },
+      resolve(_parent, { id }, ctx) {
+        return ctx.prisma.user.findUnique({
+          where: {
+            id,
+          },
+        });
       },
     });
   },
