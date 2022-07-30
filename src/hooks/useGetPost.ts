@@ -12,6 +12,7 @@ const GetPostQuery = gql`
         id
         displayName
         userName
+        pfpUrl
       }
       likes {
         id

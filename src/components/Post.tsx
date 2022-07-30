@@ -33,7 +33,15 @@ const Post = ({ id }: IProps) => {
     <div className="p-4 shadow rounded bg-white flex flex-col space-y-2 w-full md:w-[36rem]">
       <div className="flex items-center">
         <div className="flex space-x-3 items-center cursor-pointer">
-          <div className="w-10 h-10 rounded-full bg-gray-100" />
+          <div className="w-10 h-10 rounded-full bg-gray-100">
+            {data.post.author.pfpUrl && (
+              <img
+                className="w-full h-full rounded-full"
+                src={data.post.author.pfpUrl}
+                alt={`Foto de perfil de ${data.post.author.displayName}`}
+              />
+            )}
+          </div>
           <div className="flex flex-col">
             <span>{data.post.author.displayName}</span>
             <span className="text-gray-500 text-sm">

@@ -6,10 +6,10 @@ export const User = objectType({
   name: 'User',
   definition(t) {
     t.nonNull.int('id');
-    t.nonNull.string('auth0Id');
     t.nonNull.string('userName');
-    t.nonNull.string('displayName');
+    t.string('displayName');
     t.nonNull.string('email');
+    t.string('pfpUrl');
     t.nonNull.dateTime('birthDate', {});
     t.string('bio');
     t.nonNull.list.field('posts', {
