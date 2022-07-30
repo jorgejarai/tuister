@@ -7,7 +7,7 @@
    viewBox="0 0 13 13"
    version="1.1"
    id="svg5"
-   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    sodipodi:docname="loading.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,33 +24,48 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="9.2357433"
-     inkscape:cx="12.235074"
-     inkscape:cy="39.087271"
-     inkscape:window-width="2472"
-     inkscape:window-height="1428"
-     inkscape:window-x="40"
-     inkscape:window-y="80"
+     inkscape:zoom="4.6178717"
+     inkscape:cx="19.597773"
+     inkscape:cy="21.654998"
+     inkscape:window-width="1280"
+     inkscape:window-height="749"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs2" />
+     id="defs2">
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask525">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.61613;stroke-dasharray:none"
+         id="rect527"
+         x="-2.220446e-16"
+         y="6.5"
+         height="6.5"
+         width="13" />
+    </mask>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask531">
+      <rect
+         style="fill:#ffffff;stroke-width:1"
+         id="rect533"
+         width="6.5"
+         height="6.5"
+         x="6.5"
+         y="0" />
+    </mask>
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <circle
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none"
-       id="path184"
-       cx="6.5"
-       cy="6.5"
-       r="6" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.14278;stroke-dasharray:none"
-       id="rect998"
-       x="0"
-       y="0"
-       height="6.5"
-       width="6.5" />
+    <path
+       id="path1266"
+       style="fill:none;stroke:#3b82f6;stroke-width:1.07178;stroke-dasharray:none;stroke-opacity:1"
+       d="m 12.46652,6.499197 c 0,2.4119326 -1.453442,4.58637 -3.6825874,5.509377 C 6.554787,12.93158 3.9889293,12.421385 2.2828151,10.715892 0.57670083,9.0103984 0.06632011,6.4454734 0.98966263,4.2171382 1.913005,1.9888031 4.088234,0.53588998 6.5010438,0.53588998"
+       sodipodi:nodetypes="csssc" />
   </g>
 </svg>

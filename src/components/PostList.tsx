@@ -34,8 +34,8 @@ const PostList: FC<IProps> = ({
         </div>
       ))}
       {(loading || hasNextPage) && (
-        <div className="pb-4" ref={sentryRef}>
-          <Loading size="md" />
+        <div className="pb-4 flex-grow" ref={sentryRef}>
+          <Loading size="lg" />
         </div>
       )}
     </div>
