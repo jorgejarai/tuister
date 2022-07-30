@@ -13,6 +13,7 @@ model User {
   displayName String?  @unique @map("display_name")
   email       String   @unique
   birthDate   DateTime @map("birth_date")
+  pfpUrl      String?  @map("pfp_url")
   bio         String?
   posts       Post[]   @relation("user_posts")
   likes       Post[]   @relation("user_likes")
