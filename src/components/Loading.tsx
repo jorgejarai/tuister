@@ -1,4 +1,4 @@
-import { FC, RefObject } from 'react';
+import { FC } from 'react';
 
 interface IProps {
   size?: 'sm' | 'md' | 'lg';

@@ -7,8 +7,6 @@ import ErrorMessage from '@/components/ErrorMessage';
 import NewPostButton from '@/components/NewPostButton';
 import PostList from '@/components/PostList';
 
-import withOptionalAuth from '@/hoc/withOptionalAuth';
-
 import useGetPosts from '@/hooks/useGetPosts';
 
 const Home: NextPage = () => {
