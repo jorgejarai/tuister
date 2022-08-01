@@ -15,6 +15,7 @@ module.exports = {
     '^@/styles/(.*)$',
     '^@/types/(.*)$',
     '^@/util/(.*)$',
+    '^@/views/(.*)$',
     '^[./]',
   ],
   importOrderSeparation: true,
