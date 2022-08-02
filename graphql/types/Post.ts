@@ -144,6 +144,81 @@ export const PostsQuery = extendType({
         });
       },
     });
+    t.nonNull.field('postsByUser', {
+      type: 'PostResponse',
+      args: {
+        userName: nonNull(stringArg()),
+        first: nonNull(intArg()),
+        after: intArg(),
+      },
+      async resolve(_parent, { userName, first, after }, ctx) {
+        let queryResults = null;
+
+        if (after) {
+          queryResults = await ctx.prisma.post.findMany({
+            where: {
+              author: {
+                userName,
+              },
+            },
+            take: first,
+            skip: 1,
+            cursor: {
+              id: after,
+            },
+            orderBy: {
+              createdAt: 'desc',
+            },
+          });
+        } else {
+          queryResults = await ctx.prisma.post.findMany({
+            where: {
+              author: {
+                userName,
+              },
+            },
+            take: first,
+            orderBy: {
+              createdAt: 'desc',
+            },
+          });
+        }
+
+        if (queryResults.length === 0) {
+          return {
+            pageInfo: {
+              endCursor: null,
+              hasNextPage: false,
+            },
+            edges: [],
+          };
+        }
+
+        const lastPostInResults = queryResults[queryResults.length - 1];
+        const cursor = lastPostInResults.id;
+
+        const secondQueryResults = await ctx.prisma.post.findMany({
+          take: first,
+          cursor: {
+            id: cursor,
+          },
+          orderBy: {
+            createdAt: 'desc',
+          },
+        });
+
+        return {
+          pageInfo: {
+            endCursor: cursor,
+            hasNextPage: secondQueryResults.length >= first,
+          },
+          edges: queryResults.map((post) => ({
+            cursor: post.id,
+            node: post,
+          })),
+        };
+      },
+    });
   },
 });
 
