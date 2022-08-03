@@ -12,37 +12,10 @@ interface IProps {
 const UserPageView: FC<IProps> = ({ userData }) => {
   const { displayName, userName, bio, pfpUrl } = userData;
 
-  const { data, loading, error, fetchMore } = useGetPostsByUser(userName, 3);
-  const [{ endCursor, hasNextPage }, setPageInfo] = useState<{
-    endCursor: number | null;
-    hasNextPage: boolean;
-  }>({
-    endCursor: null,
-    hasNextPage: false,
-  });
-
-  useEffect(() => {
-    if (data) {
-      setPageInfo(data.posts.pageInfo);
-    }
-  }, [data]);
-
-  const loadMore = () => {
-    if (!endCursor) {
-      return;
-    }
-
-    fetchMore({
-      variables: { after: endCursor },
-      updateQuery: (prevResult, { fetchMoreResult }) => {
-        fetchMoreResult.posts.edges = [
-          ...prevResult.posts.edges,
-          ...fetchMoreResult.posts.edges,
-        ];
-        return fetchMoreResult;
-      },
-    });
-  };
+  const { data, loading, error, fetchMore, hasNextPage } = useGetPostsByUser(
+    userName,
+    3,
+  );
 
   if (error) {
     return <ErrorMessage message={error.message} />;
@@ -71,7 +44,7 @@ const UserPageView: FC<IProps> = ({ userData }) => {
         posts={data?.posts.edges || []}
         loading={loading}
         hasNextPage={hasNextPage}
-        onLoadMore={loadMore}
+        onLoadMore={fetchMore}
         disabled={!!error}
       />
     </div>
