@@ -1,5 +1,4 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/dist/frontend';
-import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -8,7 +7,9 @@ import PostInput from '@/components/PostInput';
 
 import useCreatePost from '@/hooks/useCreatePost';
 
-const NewPost: NextPage = () => {
+import type { PageWithParams } from '@/types/AppPropsWithPageParams';
+
+const NewPost: PageWithParams = () => {
   const [createPost, { success, loading, error }] = useCreatePost();
   const [content, setContent] = useState('');
   const router = useRouter();
@@ -43,6 +44,10 @@ const NewPost: NextPage = () => {
       </div>
     </div>
   );
+};
+
+NewPost.pageParams = {
+  title: 'Nuevo post - Tuister',
 };
 
 export default withPageAuthRequired(NewPost);

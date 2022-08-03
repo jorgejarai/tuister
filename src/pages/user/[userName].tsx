@@ -1,14 +1,16 @@
-import type { NextPage } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import Loading from '@/components/Loading';
 
 import useGetUserByUserName from '@/hooks/useGetUserByUserName';
 
+import type { PageWithParams } from '@/types/AppPropsWithPageParams';
+
 import InvalidUserPage from '@/views/InvalidUserPageView';
 import UserPageView from '@/views/UserPageView';
 
-const UserPage: NextPage = () => {
+const UserPage: PageWithParams = () => {
   const router = useRouter();
   const { userName } = router.query as { [key: string]: string };
 
@@ -32,7 +34,14 @@ const UserPage: NextPage = () => {
     return <InvalidUserPage type="not_found" />;
   }
 
-  return <UserPageView userData={data.userByUserName} />;
+  return (
+    <>
+      <Head>
+        <title>{data.userByUserName.displayName} - Tuister</title>
+      </Head>
+      <UserPageView userData={data.userByUserName} />
+    </>
+  );
 };
 
 export default UserPage;
