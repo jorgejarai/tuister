@@ -235,11 +235,15 @@ export const PostsMutation = extendType({
           return null;
         }
 
+        if (content.trim() === '') {
+          throw new Error('El post no puede estar vacío.');
+        }
+
         const authorId = await getUserEmail(ctx);
 
         const ret = ctx.prisma.post.create({
           data: {
-            content,
+            content: content.trim(),
             authorId: authorId!!,
             createdAt: new Date(),
           },

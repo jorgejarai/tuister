@@ -36,11 +36,13 @@ const NewPost: PageWithParams = () => {
         <PostInput onChange={setContent} />
         <button
           onClick={() => createPost(content)}
-          disabled={loading}
+          disabled={loading || content.trim() === ''}
           className="bg-blue-500 hover:bg-blue-700 text-white rounded text-md font-semibold px-2 py-1 self-end shadow focus:ring focus:ring-blue-700 transition-all focus:outline-none disabled:bg-gray-400"
         >
           {loading ? 'Cargando...' : 'Publicar'}
         </button>
+
+        <p className="text-sm">No olvides ser respetuosx con el resto!</p>
       </div>
     </div>
   );
