@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-
 import ErrorMessage from '@/components/ErrorMessage';
 import NewPostButton from '@/components/NewPostButton';
 import PostList from '@/components/PostList';
+import TrendList from '@/components/TrendsList';
 
 import useGetPosts from '@/hooks/useGetPosts';
 
@@ -14,7 +13,8 @@ const HomePageView = () => {
   }
 
   return (
-    <div className="w-full h-full bg-blue-50 overflow-auto flex-col flex">
+    <div className="w-full h-full bg-blue-50 overflow-auto flex">
+      <div className="my-5 mx-8 w-1/5"></div>
       <PostList
         posts={data?.posts.edges || []}
         loading={loading}
@@ -22,6 +22,7 @@ const HomePageView = () => {
         onLoadMore={fetchMore}
         disabled={!!error}
       />
+      <TrendList />
       <NewPostButton />
     </div>
   );

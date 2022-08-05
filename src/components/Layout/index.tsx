@@ -8,10 +8,9 @@ interface IProps {
 const Layout = ({ children }: IProps) => {
   return (
     <main className="w-screen h-screen flex justify-center">
-      <div className="w-screen md:w-1/2 h-full flex flex-col">
+      <div className="w-full h-full flex flex-col">
         <Header />
         {children}
-        <Footer />
       </div>
     </main>
   );

@@ -25,7 +25,7 @@ const NewPost: PageWithParams = () => {
       <Head>
         <title>Nuevo post - Tuister</title>
       </Head>
-      <div className="flex flex-col p-4 space-y-4 items-center mx-24">
+      <div className="w-full md:w-1/2 flex flex-col p-4 space-y-4 items-center mx-auto">
         <h1 className="text-3xl self-start font-bold">Nuevo post</h1>
         <div className="h-2" />
         {error && (
